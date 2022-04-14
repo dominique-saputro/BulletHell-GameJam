@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Attack90
   m_EditorClassIdentifier: 
   bullet_Resource: {fileID: 3665148273566556182, guid: 2bd7405914efa4a4d905456a83bc1e6e, type: 3}
-  minRotation: 1
-  maxRotation: 90
+  minRotation: 180
+  maxRotation: 360
   bullet_NumberCount: 3
   isRandom: 0
   isParent: 1
