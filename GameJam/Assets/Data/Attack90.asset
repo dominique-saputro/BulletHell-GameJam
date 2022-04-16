@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43f801a37f39f14daf5da2f7c785409, type: 3}
   m_Name: Attack90
   m_EditorClassIdentifier: 
-  bullet_Resource: {fileID: 3665148273566556182, guid: 2bd7405914efa4a4d905456a83bc1e6e, type: 3}
-  minRotation: 180
+  bullet_Resource: {fileID: 4125076501594608902, guid: 95561242173dbb2439592ce93d9ea46f, type: 3}
+  minRotation: 200
   maxRotation: 360
   bullet_NumberCount: 3
-  isRandom: 0
+  isRandom: 1
   isParent: 1
-  cooldown: 0.2
+  cooldown: 0.6
   bullet_Speed: 5
   bullet_Velocity: {x: 1, y: 0}

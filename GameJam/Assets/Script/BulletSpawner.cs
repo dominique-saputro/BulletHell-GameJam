@@ -5,8 +5,9 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     public BulletSpawnData[] spawnDatas;
-    int index = 1;
+    public int index = 1;
     public bool isSequenceRandom;
+    public bool spawningAutomatically;
 
     BulletSpawnData GetSpawnData()
     {
@@ -31,6 +32,8 @@ public class BulletSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(spawningAutomatically)
+        {
         if( timer <= 0 )
         {
             SpawnBullets();
@@ -43,9 +46,11 @@ public class BulletSpawner : MonoBehaviour
                 index += 1;
                 if ( index >= spawnDatas.Length) index = 0;
             }
+            rotations = new float[GetSpawnData().bullet_NumberCount];
             
         }
         timer -= Time.deltaTime;
+        }
     }
 
     public float[] RandomRotations()
@@ -73,6 +78,7 @@ public class BulletSpawner : MonoBehaviour
 
     public GameObject[] SpawnBullets()
     {
+        rotations = new float[GetSpawnData().bullet_NumberCount];
         if(GetSpawnData().isRandom)
         {
             RandomRotations();
