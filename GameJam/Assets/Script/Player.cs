@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     public float fireRate;
     float currentFireRate;  
-    public GameObject player_bullet;
+    public GameObject[] PlayerBullets;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,8 @@ public class Player : MonoBehaviour
         currentFireRate -= Time.deltaTime;
         if(currentFireRate < 0)
         {
-            Instantiate(player_bullet, transform.position, transform.rotation);
+            int r = Random.Range(0,PlayerBullets.Length);
+            Instantiate(PlayerBullets[r], transform.position, transform.rotation);
             currentFireRate = fireRate;
         }
 

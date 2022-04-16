@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5649211750176114504}
   - component: {fileID: 9188766396348758174}
   - component: {fileID: 914478959725344925}
+  - component: {fileID: -6565535790752845564}
   m_Layer: 0
   m_Name: BulletHell_EnemyMouseBullet_0
   m_TagString: bullet
@@ -137,3 +138,24 @@ PolygonCollider2D:
       - {x: 0.11175435, y: -0.27257875}
       - {x: 0.088456094, y: -0.20296481}
       - {x: 0.06719294, y: -0.16917543}
+--- !u!50 &-6565535790752845564
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4125076501594608902}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

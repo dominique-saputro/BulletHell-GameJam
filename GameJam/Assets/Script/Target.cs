@@ -5,10 +5,13 @@ using UnityEngine;
 public class Target : MonoBehaviour
 {
     public float health;
+    public float speed;
+    public Vector2 velocity;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -18,6 +21,9 @@ public class Target : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        transform.Translate(velocity * speed * Time.deltaTime);
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,11 +32,16 @@ public class Target : MonoBehaviour
         {
            Hit(damage: 1);
         }
+
+        if(collision.tag == "Wall")
+        {
+            velocity = velocity * -1;
+            Debug.Log("Hit Wall");
+        }
     }
 
     public void Hit(float damage)
     {
         health -= damage;
-        Debug.Log("Target Take Damage");
     }
 }

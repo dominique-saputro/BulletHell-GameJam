@@ -90,7 +90,7 @@ public class BulletSpawner : MonoBehaviour
             spawnedBullets[i] = BulletManager.GetBulletFromPool();
             if (spawnedBullets[i]==null)
             {
-                 spawnedBullets[i] = Instantiate(GetSpawnData().bullet_Resource, transform);
+                 spawnedBullets[i] = Instantiate(GetSpawnData().bullet_Resource, transform.position, transform.rotation);
                  BulletManager.bullets.Add(spawnedBullets[i]);
             } else
             {
