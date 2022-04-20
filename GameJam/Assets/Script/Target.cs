@@ -36,12 +36,12 @@ public class Target : MonoBehaviour
         if(collision.tag == "Wall")
         {
             velocity = velocity * -1;
-            Debug.Log("Hit Wall");
         }
     }
 
     public void Hit(float damage)
     {
         health -= damage;
+        Debug.Log(health);
     }
 }

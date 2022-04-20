@@ -17,17 +17,19 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(_newGameLevel);
     }
 
-    public void LoadGameDialogYes()
+    public void LevelSelectDialog_Level1()
     {
-        if(PlayerPrefs.HasKey("SavedLevel"))
-        {
-            levelToLoad = PlayerPrefs.GetString("SavedLevel");
-            SceneManager.LoadScene(levelToLoad);
-        }
-        else
-        {
-            noSavedGameDialog.SetActive(true);
-        }
+        SceneManager.LoadScene("Level1");
+    }
+
+    public void LevelSelectDialog_Level2()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void LevelSelectDialog_Level3()
+    {
+        SceneManager.LoadScene("Level3");
     }
 
     public void ExitButton()

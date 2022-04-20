@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
+    public static BulletManager bulletPoolInstance;
 
+    [SerializeField]
+    private GameObject pooledBullet;
+    private bool notEnoughBUlletsInPool = true;
     public static List<GameObject> bullets;
+    
+    private void Awake() 
+    {
+        bulletPoolInstance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -13,17 +22,27 @@ public class BulletManager : MonoBehaviour
         bullets = new List<GameObject>();
     }
 
-    public static GameObject GetBulletFromPool()
+    public GameObject GetBullet()
     {
-        for (int i = 0; i < bullets.Count; i++)
+        if (bullets.Count > 0)
         {
-            if(!bullets[i].active)
+            for (int i = 0; i < bullets.Count; i++)
             {
-                bullets[i].GetComponent<Bullet>().ResetTimer();
-                bullets[i].SetActive(true);
-                return bullets[i];
+                if(!bullets[i].activeInHierarchy)
+                {
+                    return bullets[i];
+                }
             }
         }
+
+        if (notEnoughBUlletsInPool)
+        {
+            GameObject bul = Instantiate(pooledBullet);
+            bul.SetActive(false);
+            bullets.Add(bul);
+            return bul;
+        }
+
         return null;
     }
 }

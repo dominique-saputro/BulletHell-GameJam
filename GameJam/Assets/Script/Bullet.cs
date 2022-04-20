@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Vector2 velocity;
-    public float speed;
-    public float rotation;
-    public float lifeTime;
-    float timer; //Time until bullet is destroyed
+    private Vector2 moveDirection;
+    public float moveSpeed;
+    public float lifetime;
+
+    private void OnEnable()
+    {
+        Invoke("Destroy", 3f);    
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        timer = lifeTime;
-        transform.rotation = Quaternion.Euler(0, 0, rotation);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(velocity * speed * Time.deltaTime);
-        timer -= Time.deltaTime;
-
-        if (timer <= 0) gameObject.SetActive(false);
+        transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
     }
 
-    public void ResetTimer()
+    public void SetMoveDirection(Vector2 dir)
     {
-        timer = lifeTime;
+        moveDirection = dir;
+    }
+
+    private void Destroy()
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnDisable() 
+    {
+        CancelInvoke();
     }
 }
