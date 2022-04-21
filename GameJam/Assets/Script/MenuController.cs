@@ -9,8 +9,6 @@ public class MenuController : MonoBehaviour
     [Header("Levels To Load")]
 
     public string _newGameLevel;
-    private string levelToLoad;
-    [SerializeField] private GameObject noSavedGameDialog = null;
 
     public void NewGameDialogYes()
     {

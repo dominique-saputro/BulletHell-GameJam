@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-
+    [Header("Player Settings")]
+    public bool isAlive = true;
     public int startHp;
     int hp;
     public float bullet_Cooldown;
     float bullet_Timer;
 
     public float fireRate;
+    public Image healthBar;
     float currentFireRate;  
     public GameObject[] PlayerBullets;
 
@@ -19,6 +22,7 @@ public class Player : MonoBehaviour
     {
         hp = startHp;
         currentFireRate = fireRate;
+        
     }
 
     // Update is called once per frame
@@ -37,6 +41,14 @@ public class Player : MonoBehaviour
         {
             hp -= 1;
             bullet_Timer = bullet_Cooldown;
+            Debug.Log("Player HP: " + hp);
+            healthBar.fillAmount = ((float)hp / (float)startHp) * 1f;
+        }
+
+        if(hp < 0)
+        {   
+            isAlive = false;
+            Destroy(gameObject);
         }
     }
 

@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Target : MonoBehaviour
 {
-    public float health;
+    public float startHealth;
+    float health;
     public float speed;
     public Vector2 velocity;
+
+    public bool isEnemyDead = false;
+
+    public Image healthBar;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        health = startHealth;
     }
 
     // Update is called once per frame
@@ -20,6 +26,7 @@ public class Target : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+            isEnemyDead = true;
         }
 
         transform.Translate(velocity * speed * Time.deltaTime);
@@ -43,5 +50,6 @@ public class Target : MonoBehaviour
     {
         health -= damage;
         Debug.Log(health);
+        healthBar.fillAmount = ((float)health / (float)startHealth) * 1f;
     }
 }
